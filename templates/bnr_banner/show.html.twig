@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BnrBanner{% endblock %}
+
+{% block body %}
+    <h1>BnrBanner</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bnr_banner.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ bnr_banner.name }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ bnr_banner.url }}</td>
+            </tr>
+            <tr>
+                <th>Start_date</th>
+                <td>{{ bnr_banner.startDate ? bnr_banner.startDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>End_date</th>
+                <td>{{ bnr_banner.endDate ? bnr_banner.endDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Inserted_date</th>
+                <td>{{ bnr_banner.insertedDate ? bnr_banner.insertedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Clicked_count</th>
+                <td>{{ bnr_banner.clickedCount }}</td>
+            </tr>
+            <tr>
+                <th>Order_num</th>
+                <td>{{ bnr_banner.orderNum }}</td>
+            </tr>
+            <tr>
+                <th>HrefUrl</th>
+                <td>{{ bnr_banner.hrefUrl }}</td>
+            </tr>
+            <tr>
+                <th>Playtime</th>
+                <td>{{ bnr_banner.playtime }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ bnr_banner.status }}</td>
+            </tr>
+            <tr>
+                <th>Approved_at</th>
+                <td>{{ bnr_banner.approvedAt ? bnr_banner.approvedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Show_mode</th>
+                <td>{{ bnr_banner.showMode }}</td>
+            </tr>
+            <tr>
+                <th>Arrearage</th>
+                <td>{{ bnr_banner.arrearage }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ bnr_banner.comment }}</td>
+            </tr>
+            <tr>
+                <th>Condition0</th>
+                <td>{{ bnr_banner.condition0 }}</td>
+            </tr>
+            <tr>
+                <th>Contact_email</th>
+                <td>{{ bnr_banner.contactEmail }}</td>
+            </tr>
+            <tr>
+                <th>Contact_name</th>
+                <td>{{ bnr_banner.contactName }}</td>
+            </tr>
+            <tr>
+                <th>Contact_phone</th>
+                <td>{{ bnr_banner.contactPhone }}</td>
+            </tr>
+            <tr>
+                <th>Paid</th>
+                <td>{{ bnr_banner.paid }}</td>
+            </tr>
+            <tr>
+                <th>Pay_mode</th>
+                <td>{{ bnr_banner.payMode }}</td>
+            </tr>
+            <tr>
+                <th>Sale</th>
+                <td>{{ bnr_banner.sale }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ bnr_banner.price }}</td>
+            </tr>
+            <tr>
+                <th>Day</th>
+                <td>{{ bnr_banner.day }}</td>
+            </tr>
+            <tr>
+                <th>Payment</th>
+                <td>{{ bnr_banner.payment }}</td>
+            </tr>
+            <tr>
+                <th>Dialog</th>
+                <td>{{ bnr_banner.dialog }}</td>
+            </tr>
+            <tr>
+                <th>DlgWidth</th>
+                <td>{{ bnr_banner.DlgWidth }}</td>
+            </tr>
+            <tr>
+                <th>DlgHeight</th>
+                <td>{{ bnr_banner.DlgHeight }}</td>
+            </tr>
+            <tr>
+                <th>CanvasUrl</th>
+                <td>{{ bnr_banner.canvasUrl }}</td>
+            </tr>
+            <tr>
+                <th>Is_new</th>
+                <td>{{ bnr_banner.isNew }}</td>
+            </tr>
+            <tr>
+                <th>Video_url</th>
+                <td>{{ bnr_banner.videoUrl }}</td>
+            </tr>
+            <tr>
+                <th>DefaultImg</th>
+                <td>{{ bnr_banner.defaultImg }}</td>
+            </tr>
+            <tr>
+                <th>DisplayTime</th>
+                <td>{{ bnr_banner.displayTime }}</td>
+            </tr>
+            <tr>
+                <th>SwiffyBody</th>
+                <td>{{ bnr_banner.swiffyBody }}</td>
+            </tr>
+            <tr>
+                <th>SelfTab</th>
+                <td>{{ bnr_banner.selfTab }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('bnr_banner_index') }}">back to list</a>
+
+    <a href="{{ path('bnr_banner_edit', {'id': bnr_banner.id}) }}">edit</a>
+
+    {{ include('bnr_banner/_delete_form.html.twig') }}
+{% endblock %}

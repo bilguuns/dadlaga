@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CmsOperator{% endblock %}
+
+{% block body %}
+    <h1>CmsOperator</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cms_operator.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ cms_operator.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ cms_operator.password }}</td>
+            </tr>
+            <tr>
+                <th>Permission</th>
+                <td>{{ cms_operator.permission }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ cms_operator.username }}</td>
+            </tr>
+            <tr>
+                <th>Last_logged</th>
+                <td>{{ cms_operator.lastLogged ? cms_operator.lastLogged|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Phonenumber</th>
+                <td>{{ cms_operator.phonenumber }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ cms_operator.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Editor</th>
+                <td>{{ cms_operator.editor }}</td>
+            </tr>
+            <tr>
+                <th>Real_ip</th>
+                <td>{{ cms_operator.realIp }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cms_operator_index') }}">back to list</a>
+
+    <a href="{{ path('cms_operator_edit', {'id': cms_operator.id}) }}">edit</a>
+
+    {{ include('cms_operator/_delete_form.html.twig') }}
+{% endblock %}

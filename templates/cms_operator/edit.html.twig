@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CmsOperator{% endblock %}
+
+{% block body %}
+    <h1>Edit CmsOperator</h1>
+
+    {{ include('cms_operator/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('cms_operator_index') }}">back to list</a>
+
+    {{ include('cms_operator/_delete_form.html.twig') }}
+{% endblock %}

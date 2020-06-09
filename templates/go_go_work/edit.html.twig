@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GoGoWork{% endblock %}
+
+{% block body %}
+    <h1>Edit GoGoWork</h1>
+
+    {{ include('go_go_work/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('go_go_work_index') }}">back to list</a>
+
+    {{ include('go_go_work/_delete_form.html.twig') }}
+{% endblock %}

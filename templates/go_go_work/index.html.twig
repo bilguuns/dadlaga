@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GoGoWork index{% endblock %}
+
+{% block body %}
+    <h1>GoGoWork index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Arrearge</th>
+                <th>Clicked_count</th>
+                <th>Day</th>
+                <th>End_date</th>
+                <th>Name</th>
+                <th>Payment</th>
+                <th>Price</th>
+                <th>Sale</th>
+                <th>Start_date</th>
+                <th>Total</th>
+                <th>Comment</th>
+                <th>Contact_name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for go_go_work in go_go_works %}
+            <tr>
+                <td>{{ go_go_work.id }}</td>
+                <td>{{ go_go_work.arrearge }}</td>
+                <td>{{ go_go_work.clickedCount }}</td>
+                <td>{{ go_go_work.day }}</td>
+                <td>{{ go_go_work.endDate ? go_go_work.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ go_go_work.name }}</td>
+                <td>{{ go_go_work.payment }}</td>
+                <td>{{ go_go_work.price }}</td>
+                <td>{{ go_go_work.sale }}</td>
+                <td>{{ go_go_work.startDate ? go_go_work.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ go_go_work.total }}</td>
+                <td>{{ go_go_work.comment }}</td>
+                <td>{{ go_go_work.contactName }}</td>
+                <td>
+                    <a href="{{ path('go_go_work_show', {'id': go_go_work.id}) }}">show</a>
+                    <a href="{{ path('go_go_work_edit', {'id': go_go_work.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('go_go_work_new') }}">Create new</a>
+{% endblock %}

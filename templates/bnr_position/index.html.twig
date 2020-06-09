@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BnrPosition index{% endblock %}
+
+{% block body %}
+    <h1>BnrPosition index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Width</th>
+                <th>Height</th>
+                <th>Picture</th>
+                <th>HtmlID</th>
+                <th>DefaultBanner</th>
+                <th>Service_id</th>
+                <th>Price</th>
+                <th>Title</th>
+                <th>Ctitle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bnr_position in bnr_positions %}
+            <tr>
+                <td>{{ bnr_position.id }}</td>
+                <td>{{ bnr_position.name }}</td>
+                <td>{{ bnr_position.width }}</td>
+                <td>{{ bnr_position.height }}</td>
+                <td>{{ bnr_position.picture }}</td>
+                <td>{{ bnr_position.htmlID }}</td>
+                <td>{{ bnr_position.defaultBanner }}</td>
+                <td>{{ bnr_position.serviceId }}</td>
+                <td>{{ bnr_position.price }}</td>
+                <td>{{ bnr_position.title }}</td>
+                <td>{{ bnr_position.ctitle }}</td>
+                <td>
+                    <a href="{{ path('bnr_position_show', {'id': bnr_position.id}) }}">show</a>
+                    <a href="{{ path('bnr_position_edit', {'id': bnr_position.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('bnr_position_new') }}">Create new</a>
+{% endblock %}

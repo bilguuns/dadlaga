@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BnrBanner index{% endblock %}
+
+{% block body %}
+    <h1>BnrBanner index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Start_date</th>
+                <th>End_date</th>
+                <th>Inserted_date</th>
+                <th>Clicked_count</th>
+                <th>Order_num</th>
+                <th>HrefUrl</th>
+                <th>Playtime</th>
+                <th>Status</th>
+                <th>Approved_at</th>
+                <th>Show_mode</th>
+                <th>Arrearage</th>
+                <th>Comment</th>
+                <th>Condition0</th>
+                <th>Contact_email</th>
+                <th>Contact_name</th>
+                <th>Contact_phone</th>
+                <th>Paid</th>
+                <th>Pay_mode</th>
+                <th>Sale</th>
+                <th>Price</th>
+                <th>Day</th>
+                <th>Payment</th>
+                <th>Dialog</th>
+                <th>DlgWidth</th>
+                <th>DlgHeight</th>
+                <th>CanvasUrl</th>
+                <th>Is_new</th>
+                <th>Video_url</th>
+                <th>DefaultImg</th>
+                <th>DisplayTime</th>
+                <th>SwiffyBody</th>
+                <th>SelfTab</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bnr_banner in bnr_banners %}
+            <tr>
+                <td>{{ bnr_banner.id }}</td>
+                <td>{{ bnr_banner.name }}</td>
+                <td>{{ bnr_banner.url }}</td>
+                <td>{{ bnr_banner.startDate ? bnr_banner.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bnr_banner.endDate ? bnr_banner.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bnr_banner.insertedDate ? bnr_banner.insertedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bnr_banner.clickedCount }}</td>
+                <td>{{ bnr_banner.orderNum }}</td>
+                <td>{{ bnr_banner.hrefUrl }}</td>
+                <td>{{ bnr_banner.playtime }}</td>
+                <td>{{ bnr_banner.status }}</td>
+                <td>{{ bnr_banner.approvedAt ? bnr_banner.approvedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bnr_banner.showMode }}</td>
+                <td>{{ bnr_banner.arrearage }}</td>
+                <td>{{ bnr_banner.comment }}</td>
+                <td>{{ bnr_banner.condition0 }}</td>
+                <td>{{ bnr_banner.contactEmail }}</td>
+                <td>{{ bnr_banner.contactName }}</td>
+                <td>{{ bnr_banner.contactPhone }}</td>
+                <td>{{ bnr_banner.paid }}</td>
+                <td>{{ bnr_banner.payMode }}</td>
+                <td>{{ bnr_banner.sale }}</td>
+                <td>{{ bnr_banner.price }}</td>
+                <td>{{ bnr_banner.day }}</td>
+                <td>{{ bnr_banner.payment }}</td>
+                <td>{{ bnr_banner.dialog }}</td>
+                <td>{{ bnr_banner.DlgWidth }}</td>
+                <td>{{ bnr_banner.DlgHeight }}</td>
+                <td>{{ bnr_banner.canvasUrl }}</td>
+                <td>{{ bnr_banner.isNew }}</td>
+                <td>{{ bnr_banner.videoUrl }}</td>
+                <td>{{ bnr_banner.defaultImg }}</td>
+                <td>{{ bnr_banner.displayTime }}</td>
+                <td>{{ bnr_banner.swiffyBody }}</td>
+                <td>{{ bnr_banner.selfTab }}</td>
+                <td>
+                    <a href="{{ path('bnr_banner_show', {'id': bnr_banner.id}) }}">show</a>
+                    <a href="{{ path('bnr_banner_edit', {'id': bnr_banner.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="36">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('bnr_banner_new') }}">Create new</a>
+{% endblock %}

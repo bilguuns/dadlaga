@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GoGoWorkType{% endblock %}
+
+{% block body %}
+    <h1>Create new GoGoWorkType</h1>
+
+    {{ include('go_go_work_type/_form.html.twig') }}
+
+    <a href="{{ path('go_go_work_type_index') }}">back to list</a>
+{% endblock %}

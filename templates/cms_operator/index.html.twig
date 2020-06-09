@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CmsOperator index{% endblock %}
+
+{% block body %}
+    <h1>CmsOperator index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Permission</th>
+                <th>Username</th>
+                <th>Last_logged</th>
+                <th>Phonenumber</th>
+                <th>Firstname</th>
+                <th>Editor</th>
+                <th>Real_ip</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cms_operator in cms_operators %}
+            <tr>
+                <td>{{ cms_operator.id }}</td>
+                <td>{{ cms_operator.email }}</td>
+                <td>{{ cms_operator.password }}</td>
+                <td>{{ cms_operator.permission }}</td>
+                <td>{{ cms_operator.username }}</td>
+                <td>{{ cms_operator.lastLogged ? cms_operator.lastLogged|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cms_operator.phonenumber }}</td>
+                <td>{{ cms_operator.firstname }}</td>
+                <td>{{ cms_operator.editor }}</td>
+                <td>{{ cms_operator.realIp }}</td>
+                <td>
+                    <a href="{{ path('cms_operator_show', {'id': cms_operator.id}) }}">show</a>
+                    <a href="{{ path('cms_operator_edit', {'id': cms_operator.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cms_operator_new') }}">Create new</a>
+{% endblock %}

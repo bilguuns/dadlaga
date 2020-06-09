@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BnrCompany index{% endblock %}
+
+{% block body %}
+    <h1>BnrCompany index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Pass</th>
+                <th>Email</th>
+                <th>Percent</th>
+                <th>Paid</th>
+                <th>Banner_id</th>
+                <th>Por</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bnr_company in bnr_companies %}
+            <tr>
+                <td>{{ bnr_company.id }}</td>
+                <td>{{ bnr_company.name }}</td>
+                <td>{{ bnr_company.username }}</td>
+                <td>{{ bnr_company.pass }}</td>
+                <td>{{ bnr_company.email }}</td>
+                <td>{{ bnr_company.percent }}</td>
+                <td>{{ bnr_company.paid }}</td>
+                <td>{{ bnr_company.bannerId }}</td>
+                <td>{{ bnr_company.por }}</td>
+                <td>
+                    <a href="{{ path('bnr_company_show', {'id': bnr_company.id}) }}">show</a>
+                    <a href="{{ path('bnr_company_edit', {'id': bnr_company.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('bnr_company_new') }}">Create new</a>
+{% endblock %}
