@@ -3,7 +3,16 @@
 {% block title %}BnrBanner index{% endblock %}
 
 {% block body %}
-    <h1>BnrBanner index</h1>
+    <h1>Banner list</h1>
+    <a href="{{ path('bnr_banner_new') }}">create new</a>
+
+    <table class="search">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+    </table>
 
     <table class="table">
         <thead>
@@ -97,5 +106,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('bnr_banner_new') }}">Create new</a>
+
 {% endblock %}

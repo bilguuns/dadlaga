@@ -18,7 +18,6 @@ class BnrCompanyType extends AbstractType
             ->add('email')
             ->add('percent')
             ->add('paid')
-            ->add('banner_id')
             ->add('por')
         ;
     }

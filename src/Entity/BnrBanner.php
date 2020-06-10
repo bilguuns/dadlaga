@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BnrBannerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -188,11 +190,6 @@ class BnrBanner
     private $selfTab;
 
     /**
-     * @ORM\OneToOne(targetEntity=BnrCompany::class, cascade={"persist", "remove"})
-     */
-    private $company;
-
-    /**
      * @ORM\OneToOne(targetEntity=BnrPosition::class, cascade={"persist", "remove"})
      */
     private $position;
@@ -211,6 +208,16 @@ class BnrBanner
      * @ORM\OneToOne(targetEntity=CmsOperator::class, cascade={"persist", "remove"})
      */
     private $responded_by;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BnrCompany::class, mappedBy="Banner")
+     */
+    private $company;
+
+    public function __construct()
+    {
+        $this->company = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -681,6 +688,29 @@ class BnrBanner
     public function setRespondedBy(?CmsOperator $responded_by): self
     {
         $this->responded_by = $responded_by;
+
+        return $this;
+    }
+
+    public function addCompany(BnrCompany $company): self
+    {
+        if (!$this->company->contains($company)) {
+            $this->company[] = $company;
+            $company->setBanner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompany(BnrCompany $company): self
+    {
+        if ($this->company->contains($company)) {
+            $this->company->removeElement($company);
+            // set the owning side to null (unless already changed)
+            if ($company->getBanner() === $this) {
+                $company->setBanner(null);
+            }
+        }
 
         return $this;
     }

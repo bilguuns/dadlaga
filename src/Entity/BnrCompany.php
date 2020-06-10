@@ -47,15 +47,16 @@ class BnrCompany
      */
     private $paid;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $banner_id;
 
     /**
      * @ORM\Column(type="integer")
      */
     private $por;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=BnrBanner::class, inversedBy="company")
+     */
+    private $Banner;
 
     public function getId(): ?int
     {
@@ -134,17 +135,6 @@ class BnrCompany
         return $this;
     }
 
-    public function getBannerId(): ?int
-    {
-        return $this->banner_id;
-    }
-
-    public function setBannerId(int $banner_id): self
-    {
-        $this->banner_id = $banner_id;
-
-        return $this;
-    }
 
     public function getPor(): ?int
     {
@@ -154,6 +144,18 @@ class BnrCompany
     public function setPor(int $por): self
     {
         $this->por = $por;
+
+        return $this;
+    }
+
+    public function getBanner(): ?BnrBanner
+    {
+        return $this->Banner;
+    }
+
+    public function setBanner(?BnrBanner $Banner): self
+    {
+        $this->Banner = $Banner;
 
         return $this;
     }
