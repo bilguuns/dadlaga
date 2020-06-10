@@ -50,7 +50,6 @@ class BnrBannerType extends AbstractType
             ->add('inserted_by')
             ->add('approved_by')
             ->add('responded_by')
-            ->add('company')
         ;
     }
 

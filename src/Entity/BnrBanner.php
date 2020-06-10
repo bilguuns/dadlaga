@@ -209,11 +209,11 @@ class BnrBanner
      */
     private $responded_by;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=BnrCompany::class, inversedBy="bnrBanners")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $company;
+//    /**
+//     * @ORM\ManyToOne(targetEntity=BnrCompany::class, inversedBy="bnrBanners")
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $company;
 
 //    /**
 //     * @ORM\OneToMany(targetEntity=BnrCompany::class, mappedBy="Banner")
@@ -711,14 +711,15 @@ class BnrBanner
 //    }
 
 
-public function getCompany(): ?BnrCompany
-{
-    return $this->company;
+//public function getCompany(): ?BnrCompany
+//{
+//    return $this->company;
+//}
+//
+//public function setCompany(?BnrCompany $company): self
+//{
+//    $this->company = $company;
+//
+//    return $this;
+//}}
 }
-
-public function setCompany(?BnrCompany $company): self
-{
-    $this->company = $company;
-
-    return $this;
-}}
