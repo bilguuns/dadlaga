@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BnrBannerType extends AbstractType
+class BnrBanner1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -46,7 +46,6 @@ class BnrBannerType extends AbstractType
             ->add('displayTime')
             ->add('swiffyBody')
             ->add('selfTab')
-            ->add('company')
             ->add('position')
             ->add('inserted_by')
             ->add('approved_by')

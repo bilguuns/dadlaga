@@ -632,17 +632,6 @@ class BnrBanner
         return $this;
     }
 
-    public function getCompany(): ?BnrCompany
-    {
-        return $this->company;
-    }
-
-    public function setCompany(?BnrCompany $company): self
-    {
-        $this->company = $company;
-
-        return $this;
-    }
 
     public function getPosition(): ?BnrPosition
     {

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BnrBanner;
-use App\Form\BnrBannerType;
+use App\Form\BnrBanner1Type;
 use App\Repository\BnrBannerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class BnrBannerController extends AbstractController
     public function new(Request $request): Response
     {
         $bnrBanner = new BnrBanner();
-        $form = $this->createForm(BnrBannerType::class, $bnrBanner);
+        $form = $this->createForm(BnrBanner1Type::class, $bnrBanner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class BnrBannerController extends AbstractController
      */
     public function edit(Request $request, BnrBanner $bnrBanner): Response
     {
-        $form = $this->createForm(BnrBannerType::class, $bnrBanner);
+        $form = $this->createForm(BnrBanner1Type::class, $bnrBanner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
