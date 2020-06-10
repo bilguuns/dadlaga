@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BnrCompanyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -53,10 +55,20 @@ class BnrCompany
      */
     private $por;
 
+//    /**
+//     * @ORM\ManyToOne(targetEntity=BnrBanner::class, inversedBy="company")
+//     */
+//    private $Banner;
+
     /**
-     * @ORM\ManyToOne(targetEntity=BnrBanner::class, inversedBy="company")
+     * @ORM\OneToMany(targetEntity=BnrBanner::class, mappedBy="company", orphanRemoval=true)
      */
-    private $Banner;
+    private $bnrBanners;
+
+    public function __construct()
+    {
+        $this->bnrBanners = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -148,14 +160,45 @@ class BnrCompany
         return $this;
     }
 
-    public function getBanner(): ?BnrBanner
+//    public function getBanner(): ?BnrBanner
+//    {
+//        return $this->Banner;
+//    }
+//
+//    public function setBanner(?BnrBanner $Banner): self
+//    {
+//        $this->Banner = $Banner;
+//
+//        return $this;
+//    }
+
+    /**
+     * @return Collection|BnrBanner[]
+     */
+    public function getBnrBanners(): Collection
     {
-        return $this->Banner;
+        return $this->bnrBanners;
     }
 
-    public function setBanner(?BnrBanner $Banner): self
+    public function addBnrBanner(BnrBanner $bnrBanner): self
     {
-        $this->Banner = $Banner;
+        if (!$this->bnrBanners->contains($bnrBanner)) {
+            $this->bnrBanners[] = $bnrBanner;
+            $bnrBanner->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBnrBanner(BnrBanner $bnrBanner): self
+    {
+        if ($this->bnrBanners->contains($bnrBanner)) {
+            $this->bnrBanners->removeElement($bnrBanner);
+            // set the owning side to null (unless already changed)
+            if ($bnrBanner->getCompany() === $this) {
+                $bnrBanner->setCompany(null);
+            }
+        }
 
         return $this;
     }
