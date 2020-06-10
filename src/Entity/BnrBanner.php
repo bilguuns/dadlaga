@@ -215,21 +215,6 @@ class BnrBanner
      */
     private $company;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity=BnrCompany::class, inversedBy="bnrBanners")
-//     * @ORM\JoinColumn(nullable=false)
-//     */
-//    private $company;
-
-//    /**
-//     * @ORM\OneToMany(targetEntity=BnrCompany::class, mappedBy="Banner")
-//     */
-//    private $company;
-//
-//    public function __construct()
-//    {
-//        $this->company = new ArrayCollection();
-//    }
 
     public function getId(): ?int
     {
@@ -692,42 +677,6 @@ class BnrBanner
 
         return $this;
     }
-
-//    public function addCompany(BnrCompany $company): self
-//    {
-//        if (!$this->company->contains($company)) {
-//            $this->company[] = $company;
-//            $company->setBanner($this);
-//        }
-//
-//        return $this;
-//    }
-//
-//    public function removeCompany(BnrCompany $company): self
-//    {
-//        if ($this->company->contains($company)) {
-//            $this->company->removeElement($company);
-//            // set the owning side to null (unless already changed)
-//            if ($company->getBanner() === $this) {
-//                $company->setBanner(null);
-//            }
-//        }
-//
-//        return $this;
-//    }
-
-
-//public function getCompany(): ?BnrCompany
-//{
-//    return $this->company;
-//}
-//
-//public function setCompany(?BnrCompany $company): self
-//{
-//    $this->company = $company;
-//
-//    return $this;
-//}}
 
 
 public function getCompany(): ?BnrCompany
