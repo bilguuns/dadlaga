@@ -69,10 +69,14 @@ class BnrPosition
      */
     private $ctitle;
 
+    /**
+     * @ORM\OneToMany(targetEntity=BnrBanner::class, mappedBy="position")
+     */
+    private $bnrBanners;
 
     public function __construct()
     {
-        $this->bnrBanners= new ArrayCollection();
+        $this->bnrBanners = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,6 +200,37 @@ class BnrPosition
     public function setCtitle(string $ctitle): self
     {
         $this->ctitle = $ctitle;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BnrBanner[]
+     */
+    public function getBnrBanners(): Collection
+    {
+        return $this->bnrBanners;
+    }
+
+    public function addBnrBanner(BnrBanner $bnrBanner): self
+    {
+        if (!$this->bnrBanners->contains($bnrBanner)) {
+            $this->bnrBanners[] = $bnrBanner;
+            $bnrBanner->setPosition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBnrBanner(BnrBanner $bnrBanner): self
+    {
+        if ($this->bnrBanners->contains($bnrBanner)) {
+            $this->bnrBanners->removeElement($bnrBanner);
+            // set the owning side to null (unless already changed)
+            if ($bnrBanner->getPosition() === $this) {
+                $bnrBanner->setPosition(null);
+            }
+        }
 
         return $this;
     }

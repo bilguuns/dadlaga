@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CmsOperatorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -61,6 +63,16 @@ class CmsOperator
      * @ORM\Column(type="integer")
      */
     private $real_ip;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BnrBanner::class, mappedBy="inserted_by")
+     */
+    private $bnrBanners;
+
+    public function __construct()
+    {
+        $this->bnrBanners = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -171,6 +183,37 @@ class CmsOperator
     public function setRealIp(int $real_ip): self
     {
         $this->real_ip = $real_ip;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BnrBanner[]
+     */
+    public function getBnrBanners(): Collection
+    {
+        return $this->bnrBanners;
+    }
+
+    public function addBnrBanner(BnrBanner $bnrBanner): self
+    {
+        if (!$this->bnrBanners->contains($bnrBanner)) {
+            $this->bnrBanners[] = $bnrBanner;
+            $bnrBanner->setInsertedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBnrBanner(BnrBanner $bnrBanner): self
+    {
+        if ($this->bnrBanners->contains($bnrBanner)) {
+            $this->bnrBanners->removeElement($bnrBanner);
+            // set the owning side to null (unless already changed)
+            if ($bnrBanner->getInsertedBy() === $this) {
+                $bnrBanner->setInsertedBy(null);
+            }
+        }
 
         return $this;
     }

@@ -195,6 +195,26 @@ class BnrBanner
      */
     private $company;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=BnrPosition::class, inversedBy="bnrBanners")
+     */
+    private $position;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CmsOperator::class, inversedBy="bnrBanners")
+     */
+    private $inserted_by;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CmsOperator::class, inversedBy="bnrBanners")
+     */
+    private $approved_by;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CmsOperator::class, inversedBy="bnrBanners")
+     */
+    private $responded_by;
+
 
     public function getId(): ?int
     {
@@ -616,6 +636,54 @@ public function getCompany(): ?BnrCompany
 public function setCompany(?BnrCompany $company): self
 {
     $this->company = $company;
+
+    return $this;
+}
+
+public function getPosition(): ?BnrPosition
+{
+    return $this->position;
+}
+
+public function setPosition(?BnrPosition $position): self
+{
+    $this->position = $position;
+
+    return $this;
+}
+
+public function getInsertedBy(): ?CmsOperator
+{
+    return $this->inserted_by;
+}
+
+public function setInsertedBy(?CmsOperator $inserted_by): self
+{
+    $this->inserted_by = $inserted_by;
+
+    return $this;
+}
+
+public function getApprovedBy(): ?CmsOperator
+{
+    return $this->approved_by;
+}
+
+public function setApprovedBy(?CmsOperator $approved_by): self
+{
+    $this->approved_by = $approved_by;
+
+    return $this;
+}
+
+public function getRespondedBy(): ?CmsOperator
+{
+    return $this->responded_by;
+}
+
+public function setRespondedBy(?CmsOperator $responded_by): self
+{
+    $this->responded_by = $responded_by;
 
     return $this;
 }
