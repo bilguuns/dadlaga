@@ -190,26 +190,6 @@ class BnrBanner
     private $selfTab;
 
     /**
-     * @ORM\OneToOne(targetEntity=BnrPosition::class, cascade={"persist", "remove"})
-     */
-    private $position;
-
-    /**
-     * @ORM\OneToOne(targetEntity=CmsOperator::class, cascade={"persist", "remove"})
-     */
-    private $inserted_by;
-
-    /**
-     * @ORM\OneToOne(targetEntity=CmsOperator::class, cascade={"persist", "remove"})
-     */
-    private $approved_by;
-
-    /**
-     * @ORM\OneToOne(targetEntity=CmsOperator::class, cascade={"persist", "remove"})
-     */
-    private $responded_by;
-
-    /**
      * @ORM\ManyToOne(targetEntity=BnrCompany::class, inversedBy="bnrBanners")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -628,57 +608,6 @@ class BnrBanner
 
         return $this;
     }
-
-
-    public function getPosition(): ?BnrPosition
-    {
-        return $this->position;
-    }
-
-    public function setPosition(?BnrPosition $position): self
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    public function getInsertedBy(): ?CmsOperator
-    {
-        return $this->inserted_by;
-    }
-
-    public function setInsertedBy(?CmsOperator $inserted_by): self
-    {
-        $this->inserted_by = $inserted_by;
-
-        return $this;
-    }
-
-    public function getApprovedBy(): ?CmsOperator
-    {
-        return $this->approved_by;
-    }
-
-    public function setApprovedBy(?CmsOperator $approved_by): self
-    {
-        $this->approved_by = $approved_by;
-
-        return $this;
-    }
-
-    public function getRespondedBy(): ?CmsOperator
-    {
-        return $this->responded_by;
-    }
-
-    public function setRespondedBy(?CmsOperator $responded_by): self
-    {
-        $this->responded_by = $responded_by;
-
-        return $this;
-    }
-
-
 public function getCompany(): ?BnrCompany
 {
     return $this->company;
@@ -689,4 +618,6 @@ public function setCompany(?BnrCompany $company): self
     $this->company = $company;
 
     return $this;
-}}
+}
+
+}

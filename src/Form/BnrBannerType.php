@@ -3,7 +3,12 @@
 namespace App\Form;
 
 use App\Entity\BnrBanner;
+use App\Entity\BnrCompany;
+use App\Entity\BnrPosition;
+use App\Entity\CmsOperator;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -46,11 +51,11 @@ class BnrBannerType extends AbstractType
             ->add('displayTime')
             ->add('swiffyBody')
             ->add('selfTab')
-            ->add('position')
-            ->add('inserted_by')
-            ->add('approved_by')
-            ->add('responded_by')
-            ->add('company')
+//            ->add('position',EntityType::class,['class'=>BnrPosition::class,'choice_label'=>'name',])
+//            ->add('inserted_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
+//            ->add('approved_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
+//            ->add('responded_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
+            ->add('company',EntityType::class,['class'=>BnrCompany::class,'choice_label'=>'name',])
         ;
     }
 

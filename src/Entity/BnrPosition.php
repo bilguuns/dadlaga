@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BnrPositionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,6 +68,12 @@ class BnrPosition
      * @ORM\Column(type="string", length=100)
      */
     private $ctitle;
+
+
+    public function __construct()
+    {
+        $this->bnrBanners= new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -191,4 +199,5 @@ class BnrPosition
 
         return $this;
     }
+
 }

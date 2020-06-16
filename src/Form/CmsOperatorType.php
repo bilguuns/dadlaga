@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\CmsOperator;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +17,12 @@ class CmsOperatorType extends AbstractType
         $builder
             ->add('email')
             ->add('password')
-            ->add('permission')
+            ->add('permission', ChoiceType::class, [
+                'choices' => [
+                    'Admin' => 'Admin',
+                    'User' => 'User',
+                ],
+            ])
             ->add('username')
             ->add('last_logged')
             ->add('phonenumber')
