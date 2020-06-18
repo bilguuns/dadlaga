@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}BnrBanner index{% endblock %}
-
 {% block body %}
     <h1>Banner Creation</h1>
-    <a href="{{ path('bnr_banner_new') }}">Create banner</a>
 
+    <a href="{{ path('bnr_banner_new') }}">Create banner</a>
+    <table>
+        {{ form(form ) }}
+{#        {{ include('bnr_banner/search.php') }}#}
+{#        {% if searchValue|length %}#}
+{#            {{ searchValue }}#}
+{#        {% endif %}#}
+{#        {{ form_start(form) }}#}
+{#            {{ form_widget(form) }}#}
+{#            <button class="btn">{{ button_label|default('Search') }}</button>#}
+{#        {{ form_end(form) }}#}
+
+    </table>
 
     <table class="table">
         <thead>
@@ -56,9 +67,9 @@
             <tr>
 {#                <td>{{ bnr_banner.id }}</td>#}
                 <td>{{ bnr_banner.name}}</td>
-{#                <td>{{ bnr_banner.position.name}}</td>#}
-{#                <td>{{ bnr_banner.company.name}}</td>#}
-{#                <td>{{ bnr_banner.insertedby.username}}</td>#}
+                <td>{{ bnr_banner.position.name}}</td>
+                <td>{{ bnr_banner.company.name}}</td>
+                <td>{{ bnr_banner.insertedby.username}}</td>
                 <td>{{ bnr_banner.url}}</td>
 {#                <td>{{ bnr_banner.startDate ? bnr_banner.startDate|date('Y-m-d H:i:s') : '' }}</td>#}
 {#                <td>{{ bnr_banner.endDate ? bnr_banner.endDate|date('Y-m-d H:i:s') : '' }}</td>#}

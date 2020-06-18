@@ -8,19 +8,20 @@ use App\Entity\BnrPosition;
 use App\Entity\CmsOperator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class BnrBannerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('url')
-            ->add('start_date')
-            ->add('end_date')
+            ->add('name', TextType::class, ['required' => false, 'label' => 'Баннерийн нэр',])
+            ->add('url', TextType::class, ['required' => false, 'label' => 'Үсрэх хаяг',])
+            ->add('start_date',DateTimeType::class, ['required' => true, 'date_label' => 'Эхлэх огноо',])
+            ->add('end_date',DateTimeType::class, ['required' => true, 'date_label' => 'Дуусах огноо',])
             ->add('inserted_date')
             ->add('clicked_count')
             ->add('order_num')
@@ -51,10 +52,10 @@ class BnrBannerType extends AbstractType
             ->add('displayTime')
             ->add('swiffyBody')
             ->add('selfTab')
-//            ->add('position',EntityType::class,['class'=>BnrPosition::class,'choice_label'=>'name',])
-//            ->add('inserted_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
-//            ->add('approved_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
-//            ->add('responded_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
+            ->add('position',EntityType::class,['class'=>BnrPosition::class,'choice_label'=>'name',])
+            ->add('inserted_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
+            ->add('approved_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
+            ->add('responded_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
             ->add('company',EntityType::class,['class'=>BnrCompany::class,'choice_label'=>'name',])
         ;
     }

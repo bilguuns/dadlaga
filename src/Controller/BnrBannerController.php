@@ -6,6 +6,8 @@ use App\Entity\BnrBanner;
 use App\Form\BnrBannerType;
 use App\Repository\BnrBannerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,13 +18,41 @@ use Symfony\Component\Routing\Annotation\Route;
 class BnrBannerController extends AbstractController
 {
     /**
-     * @Route("/", name="bnr_banner_index", methods={"GET"})
+     * @Route("/", name="bnr_banner_index", methods={"GET", "POST"})
      */
-    public function index(BnrBannerRepository $bnrBannerRepository): Response
+    public function index(BnrBannerRepository $bnrBannerRepository, Request $request): Response
     {
+//        $form = $this->createForm(BannerSearchType::class);
+//
+//
+//        $searchValue = '';
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $searchValue = $request->get('name');
+////            return $this->render('bnr_banner/index.html.twig', [
+////                'form' => $form->createView(),
+////                'bnr_banners' => $bnrBannerRepository->findAll(),
+////                'searchValue' => $searchValue,
+////            ]);
+//        }
+
         return $this->render('bnr_banner/index.html.twig', [
-            'bnr_banners' => $bnrBannerRepository->findAll(),
+//            'form' => $form->createView(),
+            'bnr_banners' => $bnrBannerRepository->findAll()
         ]);
+    }
+    public function search()
+    {
+        $form=$this->createFormBuilder(null)
+            ->add('name', TextType::class)
+            ->add('search',SubmitType::class,[
+                'attr'=>[
+                    'class'=>'btn btn-primary'
+                ]
+            ])
+            ->getForm();
+        return $this->render('bnr_banner/index.html.twig',[
+            'form'=>$form->createView()
+            ]);
     }
 
     /**
