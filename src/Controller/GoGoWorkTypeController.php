@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/go/go/work/type")
+ * @Route("/go/go/work-type")
  */
 class GoGoWorkTypeController extends AbstractController
 {

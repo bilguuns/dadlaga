@@ -8,6 +8,9 @@ use App\Entity\BnrPosition;
 use App\Entity\CmsOperator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -30,7 +33,7 @@ class BnrBannerType extends AbstractType
             ->add('status')
             ->add('approved_at')
             ->add('show_mode')
-            ->add('arrearage')
+//            ->add('arrearage')
             ->add('comment')
             ->add('condition0')
             ->add('contact_email')
@@ -39,9 +42,9 @@ class BnrBannerType extends AbstractType
             ->add('paid')
             ->add('pay_mode')
             ->add('sale')
-            ->add('price')
+//            ->add('price')
             ->add('day')
-            ->add('payment')
+//            ->add('payment')
             ->add('dialog')
             ->add('DlgWidth')
             ->add('DlgHeight')
@@ -52,6 +55,7 @@ class BnrBannerType extends AbstractType
             ->add('displayTime')
             ->add('swiffyBody')
             ->add('selfTab')
+            ->add('noat',CheckboxType::class, ['required' => false, 'label' => 'НӨАТ', 'mapped' => false])
             ->add('position',EntityType::class,['class'=>BnrPosition::class,'choice_label'=>'name',])
             ->add('inserted_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
             ->add('approved_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])

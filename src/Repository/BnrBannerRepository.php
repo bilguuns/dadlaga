@@ -18,6 +18,29 @@ class BnrBannerRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, BnrBanner::class);
     }
+//    public function findName($id)
+//    {
+//        $entityManager = $this->getEntityManager();
+//
+//        $query = $entityManager->createQuery(
+//            'SELECT b, c
+//        FROM App\Entity\BnrBanner b
+//        INNER JOIN b.company c
+//        WHERE b.company = :id'
+//        )->setParameter('id', $id);
+//
+//        return $query->getOneOrNullResult();
+//
+//    }
+//
+//    public function findAllOrderedByName()
+//    {
+//        return $this->getEntityManager()
+//            ->createQuery(
+//                'SELECT b FROM App:BnrBanner b ORDER BY b.name ASC'
+//            )
+//            ->getResult();
+//    }
 
     // /**
     //  * @return BnrBanner[] Returns an array of BnrBanner objects

@@ -215,6 +215,11 @@ class BnrBanner
      */
     private $responded_by;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $NOAT;
+
 
     public function getId(): ?int
     {
@@ -628,64 +633,78 @@ class BnrBanner
 
         return $this;
     }
-public function getCompany(): ?BnrCompany
-{
-    return $this->company;
-}
+    public function getCompany(): ?BnrCompany
+    {
+        return $this->company;
+    }
 
-public function setCompany(?BnrCompany $company): self
-{
-    $this->company = $company;
+    public function setCompany(?BnrCompany $company): self
+    {
+        $this->company = $company;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getPosition(): ?BnrPosition
-{
-    return $this->position;
-}
+    public function getPosition(): ?BnrPosition
+    {
+        return $this->position;
+    }
 
-public function setPosition(?BnrPosition $position): self
-{
-    $this->position = $position;
+    public function setPosition(?BnrPosition $position): self
+    {
+        $this->position = $position;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getInsertedBy(): ?CmsOperator
-{
-    return $this->inserted_by;
-}
+    public function getInsertedBy(): ?CmsOperator
+    {
+        return $this->inserted_by;
+    }
 
-public function setInsertedBy(?CmsOperator $inserted_by): self
-{
-    $this->inserted_by = $inserted_by;
+    public function setInsertedBy(?CmsOperator $inserted_by): self
+    {
+        $this->inserted_by = $inserted_by;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getApprovedBy(): ?CmsOperator
-{
-    return $this->approved_by;
-}
+    public function getApprovedBy(): ?CmsOperator
+    {
+        return $this->approved_by;
+    }
 
-public function setApprovedBy(?CmsOperator $approved_by): self
-{
-    $this->approved_by = $approved_by;
+    public function setApprovedBy(?CmsOperator $approved_by): self
+    {
+        $this->approved_by = $approved_by;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getRespondedBy(): ?CmsOperator
-{
-    return $this->responded_by;
-}
+    public function getRespondedBy(): ?CmsOperator
+    {
+        return $this->responded_by;
+    }
 
-public function setRespondedBy(?CmsOperator $responded_by): self
-{
-    $this->responded_by = $responded_by;
+    public function setRespondedBy(?CmsOperator $responded_by): self
+    {
+        $this->responded_by = $responded_by;
 
-    return $this;
-}
+        return $this;
+    }
+
+    public function getNOAT(): ?int
+    {
+        return $this->NOAT;
+    }
+
+    public function setNOAT(?int $NOAT): self
+    {
+        $this->NOAT = $NOAT;
+
+        return $this;
+    }
+
+
 
 }

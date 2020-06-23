@@ -30,11 +30,13 @@ class BnrCompanyController extends AbstractController
      */
     public function new(Request $request): Response
     {
+
         $bnrCompany = new BnrCompany();
         $form = $this->createForm(BnrCompanyType::class, $bnrCompany);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bnrCompany);
             $entityManager->flush();

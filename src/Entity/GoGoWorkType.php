@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GoGoWorkTypeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,17 @@ class GoGoWorkType
      * @ORM\Column(type="integer")
      */
     private $price;
+
+    /**
+     * @ORM\OneToMany(targetEntity=GoGoWork::class, mappedBy="Type")
+     */
+    private $goGoWorks;
+
+
+    public function __construct()
+    {
+        $this->goGoWorks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -55,4 +68,36 @@ class GoGoWorkType
 
         return $this;
     }
+
+    /**
+     * @return Collection|GoGoWork[]
+     */
+    public function getGoGoWorks(): Collection
+    {
+        return $this->goGoWorks;
+    }
+
+    public function addGoGoWork(GoGoWork $goGoWork): self
+    {
+        if (!$this->goGoWorks->contains($goGoWork)) {
+            $this->goGoWorks[] = $goGoWork;
+            $goGoWork->setType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGoGoWork(GoGoWork $goGoWork): self
+    {
+        if ($this->goGoWorks->contains($goGoWork)) {
+            $this->goGoWorks->removeElement($goGoWork);
+            // set the owning side to null (unless already changed)
+            if ($goGoWork->getType() === $this) {
+                $goGoWork->setType(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

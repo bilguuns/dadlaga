@@ -8,41 +8,14 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ bnr_company.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
+                <th>Нэр</th>
                 <td>{{ bnr_company.name }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ bnr_company.username }}</td>
-            </tr>
-            <tr>
-                <th>Pass</th>
-                <td>{{ bnr_company.pass }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ bnr_company.email }}</td>
-            </tr>
-            <tr>
-                <th>Percent</th>
-                <td>{{ bnr_company.percent }}</td>
-            </tr>
-            <tr>
-                <th>Paid</th>
-                <td>{{ bnr_company.paid }}</td>
-            </tr>
-            <tr>
-                <th>Por</th>
-                <td>{{ bnr_company.por }}</td>
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('bnr_company_index') }}">back to list</a>
+    <br>
 
     <a href="{{ path('bnr_company_edit', {'id': bnr_company.id}) }}">edit</a>
 

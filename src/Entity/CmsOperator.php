@@ -69,9 +69,15 @@ class CmsOperator
      */
     private $bnrBanners;
 
+    /**
+     * @ORM\OneToMany(targetEntity=GoGoWork::class, mappedBy="user")
+     */
+    private $goGoWorks;
+
     public function __construct()
     {
         $this->bnrBanners = new ArrayCollection();
+        $this->goGoWorks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -212,6 +218,37 @@ class CmsOperator
             // set the owning side to null (unless already changed)
             if ($bnrBanner->getInsertedBy() === $this) {
                 $bnrBanner->setInsertedBy(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GoGoWork[]
+     */
+    public function getGoGoWorks(): Collection
+    {
+        return $this->goGoWorks;
+    }
+
+    public function addGoGoWork(GoGoWork $goGoWork): self
+    {
+        if (!$this->goGoWorks->contains($goGoWork)) {
+            $this->goGoWorks[] = $goGoWork;
+            $goGoWork->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGoGoWork(GoGoWork $goGoWork): self
+    {
+        if ($this->goGoWorks->contains($goGoWork)) {
+            $this->goGoWorks->removeElement($goGoWork);
+            // set the owning side to null (unless already changed)
+            if ($goGoWork->getUser() === $this) {
+                $goGoWork->setUser(null);
             }
         }
 

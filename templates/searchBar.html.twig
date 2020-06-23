@@ -4,12 +4,14 @@
 
 {% block title %}BnrBanner index{% endblock %}
 {% block body %}
+    <div id="print">
+
     <h1>Тайлан</h1>
-    {{ form(form ) }}
+{#    {{ form(form ) }}#}
+        <input id="print1" type="button" onclick="print1()" value="Тайлан ">
 {#    <a href="{{ path('bnr_banner_new') }}">Create banner</a>#}
     <table>
 
-                {{ include('go_go_work/index.html.twig') }}7
         {#            {{ searchValue }}#}
         {#        {% endif %}#}
         {#        {{ form_start(form) }}#}
@@ -18,6 +20,7 @@
         {#        {{ form_end(form) }}#}
 
     </table>
+    </div>
 
     <table class="table">
         <thead>
@@ -25,17 +28,13 @@
             <th>Байгууллага</th>
             <th>Нэр</th>
             <th>Байрлал</th>
-            <th>Оперотар</th>
-            <th>Үсрэх хаяг</th>
             <th>Хугацаа</th>
-            <th>Click</th>
             <th>Нэгжийн үнэ</th>
             <th>Хоног</th>
             <th>Хөнгөлөлт(%)</th>
             <th>Нийт</th>
             <th>НӨАТ+</th>
-            <th>Эхний үлдэгдэл</th>
-            <th>Төлөлт</th>
+            <th>Эцсийн үлдэгдэл</th>
 {#            #}{#            <th>Оруулсан огноо</th>#}
 
 {#            #}{#            <th>Order_num</th>#}
@@ -72,56 +71,64 @@
         <tbody>
         {% for go_go_work in go_go_works %}
             <tr>
-                <td>{{ go_go_work.id }}</td>
-                <td>{{ go_go_work.arrearge }}</td>
-                <td>{{ go_go_work.clickedCount }}</td>
+                <td>{{ go_go_work.company.name }}</td>
+                <td>{{ go_go_work.name}}</td>
+                <td>{{ go_go_work.Type.name}}</td>
+                <td>{{ go_go_work.startDate ? go_go_work.startDate|date('Y-m-d H:i:s') : '' }}<br>{{ go_go_work.endDate ? go_go_work.endDate|date('Y-m-d H:i:s') : '' }}</td>
+{#                <td>{{ go_go_work.insertedDate ? go_go_work.insertedDate|date('Y-m-d H:i:s') : '' }}</td>#}
+                <td>{{ go_go_work.Type.price }}</td>
                 <td>{{ go_go_work.day }}</td>
-                <td>{{ go_go_work.endDate ? go_go_work.endDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ go_go_work.name }}</td>
-                <td>{{ go_go_work.payment }}</td>
-                <td>{{ go_go_work.price }}</td>
                 <td>{{ go_go_work.sale }}</td>
-                <td>{{ go_go_work.startDate ? go_go_work.startDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ go_go_work.total }}</td>
-                <td>{{ go_go_work.comment }}</td>
-                <td>{{ go_go_work.contactName }}</td>
-{#                #}{#                <td>{{ bnr_banner.orderNum }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.hrefUrl }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.playtime }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.status }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.approvedAt ? bnr_banner.approvedAt|date('Y-m-d H:i:s') : '' }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.showMode }}</td>#}
-
-{#                #}{#                <td>{{ bnr_banner.comment }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.condition0 }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.contactEmail }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.contactName }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.contactPhone }}</td>#}
-
-{#                #}{#                <td>{{ bnr_banner.payMode }}</td>#}
+                <td>{{ go_go_work.payment}}</td>
+                <td>{{ go_go_work.noat }}</td>
+                <td>{{ go_go_work.arrearge }}</td>
 
 
+                {#                <td>{{ go_go_work.arrearge }}</td>#}
+                {#                <td>{{ go_go_work.clickedCount }}</td>#}
+                {#                <td>{{ go_go_work.day }}</td>#}
+                {#                <td>{{ go_go_work.endDate ? go_go_work.endDate|date('Y-m-d H:i:s') : '' }}</td>#}
+                {#                <td>{{ go_go_work.name }}</td>#}
+                {#                <td>{{ go_go_work.payment }}</td>#}
+                {#                <td>{{ go_go_work.price }}</td>#}
+                {#                <td>{{ go_go_work.sale }}</td>#}
+                {#                <td>{{ go_go_work.startDate ? go_go_work.startDate|date('Y-m-d H:i:s') : '' }}</td>#}
+                {#                <td>{{ go_go_work.total }}</td>#}
+                {#                <td>{{ go_go_work.comment }}</td>#}
+                {#                <td>{{ go_go_work.contactName }}</td>
+#}
+{#                                <td>{{ bnr_banner.orderNum }}</td>#}
+{#                                <td>{{ bnr_banner.hrefUrl }}</td>#}
+{#                                <td>{{ bnr_banner.playtime }}</td>#}
+{#                                <td>{{ bnr_banner.status }}</td>#}
+{#                                <td>{{ bnr_banner.approvedAt ? bnr_banner.approvedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+{#                                <td>{{ bnr_banner.showMode }}</td>#}
+
+{#                                <td>{{ bnr_banner.comment }}</td>#}
+{#                                <td>{{ bnr_banner.condition0 }}</td>#}
+{#                                <td>{{ bnr_banner.contactEmail }}</td>#}
+{#                                <td>{{ bnr_banner.contactName }}</td>#}
+{#                                <td>{{ bnr_banner.contactPhone }}</td>#}
+
+{#                                <td>{{ bnr_banner.payMode }}</td>#}
 
 
-{#                #}{#                <td>{{ bnr_banner.dialog }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.DlgWidth }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.DlgHeight }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.canvasUrl }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.isNew }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.videoUrl }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.defaultImg }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.displayTime }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.swiffyBody }}</td>#}
-{#                #}{#                <td>{{ bnr_banner.selfTab }}</td>#}
-                <td>
-{#                    <a href="{{ path('bnr_banner_show', {'id': bnr_banner.id}) }}">show</a>#}
-{#                    <a href="{{ path('bnr_banner_edit', {'id': bnr_banner.id}) }}">edit</a>#}
-                </td>
+
+
+{#                                <td>{{ bnr_banner.dialog }}</td>#}
+{#                                <td>{{ bnr_banner.DlgWidth }}</td>#}
+{#                                <td>{{ bnr_banner.DlgHeight }}</td>#}
+{#                                <td>{{ bnr_banner.canvasUrl }}</td>#}
+{#                                <td>{{ bnr_banner.isNew }}</td>#}
+{#                                <td>{{ bnr_banner.videoUrl }}</td>#}
+{#                                <td>{{ bnr_banner.defaultImg }}</td>#}
+{#                                <td>{{ bnr_banner.displayTime }}</td>#}
+{#                                <td>{{ bnr_banner.swiffyBody }}</td>#}
+{#                                <td>{{ bnr_banner.selfTab }}</td>#}
+
             </tr>
         {% else %}
-            <tr>
-                <td colspan="36">no records found</td>
-            </tr>
+
         {% endfor %}
 
 
@@ -131,18 +138,13 @@
                 <td>{{ bnr_banner.company.name}}</td>
                 <td>{{ bnr_banner.name}}</td>
                 <td>{{ bnr_banner.position.name}}</td>
-                <td>{{ bnr_banner.insertedby.username}}</td>
-                <td>{{ bnr_banner.url}}</td>
                 <td>{{ bnr_banner.startDate ? bnr_banner.startDate|date('Y-m-d H:i:s') : '' }}<br>{{ bnr_banner.endDate ? bnr_banner.endDate|date('Y-m-d H:i:s') : '' }}</td>
-                {#                #}{#                <td>{{ bnr_banner.insertedDate ? bnr_banner.insertedDate|date('Y-m-d H:i:s') : '' }}</td>#}
-                <td>{{ bnr_banner.clickedCount }}</td>
                 <td>{{ bnr_banner.position.price }}</td>
                 <td>{{ bnr_banner.day }}</td>
                 <td>{{ bnr_banner.sale }}</td>
                 <td>{{ bnr_banner.payment}}</td>
                 <td>{{ bnr_banner.noat }}</td>
                 <td>{{ bnr_banner.arrearage }}</td>
-                <td>{{ bnr_banner.paid }}</td>
                 {#                #}{#                <td>{{ bnr_banner.orderNum }}</td>#}
                 {#                #}{#                <td>{{ bnr_banner.hrefUrl }}</td>#}
                 {#                #}{#                <td>{{ bnr_banner.playtime }}</td>#}
@@ -183,6 +185,18 @@
         {% endfor %}
         </tbody>
     </table>
+
+
+    <script>
+        function print1() {
+            var printButton=document.getElementById("print");
+            printButton.style.visibility='hidden';
+            window.print();
+            printButton.style.visibility='visible';
+
+        }
+
+    </script>
 
 
 {% endblock %}

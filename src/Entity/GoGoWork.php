@@ -48,11 +48,6 @@ class GoGoWork
     private $payment;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $price;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $sale;
@@ -66,36 +61,44 @@ class GoGoWork
      * @ORM\Column(type="integer")
      */
     private $total;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
     private $comment;
-
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $contact_name;
-
-    /**
-     * @ORM\OneToOne(targetEntity=GoGoWorkType::class, cascade={"persist", "remove"})
-     */
-    private $type;
-
-    /**
-     * @ORM\OneToOne(targetEntity=BnrCompany::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=BnrCompany::class, inversedBy="goGoWorks")
      */
     private $company;
 
     /**
-     * @ORM\OneToOne(targetEntity=CmsOperator::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=CmsOperator::class, inversedBy="goGoWorks")
      */
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity=CmsOperator::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=CmsOperator::class, inversedBy="goGoWorks")
      */
     private $responded_by;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $contactName;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=GoGoWorkType::class, inversedBy="goGoWorks")
+     */
+    private $Type;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $NOAT;
 
     public function getId(): ?int
     {
@@ -137,6 +140,17 @@ class GoGoWork
 
         return $this;
     }
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
 
     public function getEndDate(): ?\DateTimeInterface
     {
@@ -170,18 +184,6 @@ class GoGoWork
     public function setPayment(int $payment): self
     {
         $this->payment = $payment;
-
-        return $this;
-    }
-
-    public function getPrice(): ?int
-    {
-        return $this->price;
-    }
-
-    public function setPrice(int $price): self
-    {
-        $this->price = $price;
 
         return $this;
     }
@@ -234,30 +236,6 @@ class GoGoWork
         return $this;
     }
 
-    public function getContactName(): ?string
-    {
-        return $this->contact_name;
-    }
-
-    public function setContactName(string $contact_name): self
-    {
-        $this->contact_name = $contact_name;
-
-        return $this;
-    }
-
-    public function getType(): ?GoGoWorkType
-    {
-        return $this->type;
-    }
-
-    public function setType(?GoGoWorkType $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
     public function getCompany(): ?BnrCompany
     {
         return $this->company;
@@ -293,4 +271,41 @@ class GoGoWork
 
         return $this;
     }
+
+    public function getContactName(): ?string
+    {
+        return $this->contactName;
+    }
+
+    public function setContactName(string $contactName): self
+    {
+        $this->contactName = $contactName;
+
+        return $this;
+    }
+
+    public function getType(): ?GoGoWorkType
+    {
+        return $this->Type;
+    }
+
+    public function setType(?GoGoWorkType $Type): self
+    {
+        $this->Type = $Type;
+
+        return $this;
+    }
+
+    public function getNOAT(): ?int
+    {
+        return $this->NOAT;
+    }
+
+    public function setNOAT(?int $NOAT): self
+    {
+        $this->NOAT = $NOAT;
+
+        return $this;
+    }
+
 }

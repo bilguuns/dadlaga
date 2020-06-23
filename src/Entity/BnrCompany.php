@@ -20,7 +20,7 @@ class BnrCompany
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=50)
      */
     private $name;
 
@@ -60,9 +60,15 @@ class BnrCompany
      */
     private $bnrBanners;
 
+    /**
+     * @ORM\OneToMany(targetEntity=GoGoWork::class, mappedBy="company")
+     */
+    private $goGoWorks;
+
     public function __construct()
     {
         $this->bnrBanners = new ArrayCollection();
+        $this->goGoWorks = new ArrayCollection();
     }
 
 
@@ -182,6 +188,37 @@ public function removeBnrBanner(BnrBanner $bnrBanner): self
         // set the owning side to null (unless already changed)
         if ($bnrBanner->getCompany() === $this) {
             $bnrBanner->setCompany(null);
+        }
+    }
+
+    return $this;
+}
+
+/**
+ * @return Collection|GoGoWork[]
+ */
+public function getGoGoWorks(): Collection
+{
+    return $this->goGoWorks;
+}
+
+public function addGoGoWork(GoGoWork $goGoWork): self
+{
+    if (!$this->goGoWorks->contains($goGoWork)) {
+        $this->goGoWorks[] = $goGoWork;
+        $goGoWork->setCompany($this);
+    }
+
+    return $this;
+}
+
+public function removeGoGoWork(GoGoWork $goGoWork): self
+{
+    if ($this->goGoWorks->contains($goGoWork)) {
+        $this->goGoWorks->removeElement($goGoWork);
+        // set the owning side to null (unless already changed)
+        if ($goGoWork->getCompany() === $this) {
+            $goGoWork->setCompany(null);
         }
     }
 

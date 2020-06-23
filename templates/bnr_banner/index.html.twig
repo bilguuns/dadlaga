@@ -6,8 +6,8 @@
 
     <a href="{{ path('bnr_banner_new') }}">Create banner</a>
     <table>
-        {{ form(form ) }}
-{#        {{ include('bnr_banner/search.php') }}#}
+
+{#        {{ include('bnr_banner/searchBar.htmml.twig') }}#}
 {#        {% if searchValue|length %}#}
 {#            {{ searchValue }}#}
 {#        {% endif %}#}
@@ -21,14 +21,13 @@
     <table class="table">
         <thead>
         <tr>
-{#            <th>Id</th>#}
             <th>Нэр</th>
             <th>Байрлал</th>
             <th>Байгууллага</th>
             <th>Оперотар</th>
             <th>Үсрэх хаяг</th>
-{#            <th>Эхлэх огноо</th>#}
-{#            <th>Дуусах огноо</th>#}
+            <th>Эхлэх огноо</th>
+            <th>Дуусах огноо</th>
 {#            <th>Оруулсан огноо</th>#}
 {#            <th>Clicked_count</th>#}
 {#            <th>Order_num</th>#}
@@ -46,9 +45,9 @@
 {#            <th>Төлөлт/th>#}
 {#            <th>Төлбөрийн хэлбэр</th>#}
 {#            <th>Хөнгөлөл(%)</th>#}
-{#            <th>Нэгжийн үнэ</th>#}
+            <th>Нэгжийн үнэ</th>
 {#            <th>Day</th>#}
-{#            <th>Нийт</th>#}
+            <th>Нийт</th>
 {#            <th>Dialog</th>#}
 {#            <th>DlgWidth</th>#}
 {#            <th>DlgHeight</th>#}
@@ -65,14 +64,13 @@
         <tbody>
         {% for bnr_banner in bnr_banners %}
             <tr>
-{#                <td>{{ bnr_banner.id }}</td>#}
                 <td>{{ bnr_banner.name}}</td>
                 <td>{{ bnr_banner.position.name}}</td>
                 <td>{{ bnr_banner.company.name}}</td>
                 <td>{{ bnr_banner.insertedby.username}}</td>
                 <td>{{ bnr_banner.url}}</td>
-{#                <td>{{ bnr_banner.startDate ? bnr_banner.startDate|date('Y-m-d H:i:s') : '' }}</td>#}
-{#                <td>{{ bnr_banner.endDate ? bnr_banner.endDate|date('Y-m-d H:i:s') : '' }}</td>#}
+                <td>{{ bnr_banner.startDate ? bnr_banner.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bnr_banner.endDate ? bnr_banner.endDate|date('Y-m-d H:i:s') : '' }}</td>
 {#                <td>{{ bnr_banner.insertedDate ? bnr_banner.insertedDate|date('Y-m-d H:i:s') : '' }}</td>#}
 {#                <td>{{ bnr_banner.clickedCount }}</td>#}
 {#                <td>{{ bnr_banner.orderNum }}</td>#}
@@ -90,9 +88,9 @@
 {#                <td>{{ bnr_banner.paid }}</td>#}
 {#                <td>{{ bnr_banner.payMode }}</td>#}
 {#                <td>{{ bnr_banner.sale }}</td>#}
-{#                <td>{{ bnr_banner.price }}</td>#}
+                <td>{{ bnr_banner.price }}</td>
 {#                <td>{{ bnr_banner.day }}</td>#}
-{#                <td>{{ bnr_banner.payment }}</td>#}
+                <td>{{ bnr_banner.payment }}</td>
 {#                <td>{{ bnr_banner.dialog }}</td>#}
 {#                <td>{{ bnr_banner.DlgWidth }}</td>#}
 {#                <td>{{ bnr_banner.DlgHeight }}</td>#}

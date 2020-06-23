@@ -8,28 +8,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Pass</th>
-                <th>Email</th>
-                <th>Percent</th>
-                <th>Paid</th>
-                <th>Por</th>
-                <th>actions</th>
+                <th>Нэр</th>
+                <th>Засах</th>
             </tr>
         </thead>
         <tbody>
         {% for bnr_company in bnr_companies %}
             <tr>
-                <td>{{ bnr_company.id }}</td>
                 <td>{{ bnr_company.name }}</td>
-                <td>{{ bnr_company.username }}</td>
-                <td>{{ bnr_company.pass }}</td>
-                <td>{{ bnr_company.email }}</td>
-                <td>{{ bnr_company.percent }}</td>
-                <td>{{ bnr_company.paid }}</td>
-                <td>{{ bnr_company.por }}</td>
+
                 <td>
                     <a href="{{ path('bnr_company_show', {'id': bnr_company.id}) }}">show</a>
                     <a href="{{ path('bnr_company_edit', {'id': bnr_company.id}) }}">edit</a>
