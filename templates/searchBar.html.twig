@@ -26,6 +26,7 @@
         <thead>
         <tr>
             <th>Байгууллага</th>
+            <th>Компаний регистер</th>
             <th>Нэр</th>
             <th>Байрлал</th>
             <th>Хугацаа</th>
@@ -72,6 +73,7 @@
         {% for go_go_work in go_go_works %}
             <tr>
                 <td>{{ go_go_work.company.name }}</td>
+                <td>{{ go_go_work.company.register }}</td>
                 <td>{{ go_go_work.name}}</td>
                 <td>{{ go_go_work.Type.name}}</td>
                 <td>{{ go_go_work.startDate ? go_go_work.startDate|date('Y-m-d H:i:s') : '' }}<br>{{ go_go_work.endDate ? go_go_work.endDate|date('Y-m-d H:i:s') : '' }}</td>
@@ -136,6 +138,7 @@
         {% for bnr_banner in bnr_banners %}
             <tr>
                 <td>{{ bnr_banner.company.name}}</td>
+                <td>{{ bnr_banner.company.register}}</td>
                 <td>{{ bnr_banner.name}}</td>
                 <td>{{ bnr_banner.position.name}}</td>
                 <td>{{ bnr_banner.startDate ? bnr_banner.startDate|date('Y-m-d H:i:s') : '' }}<br>{{ bnr_banner.endDate ? bnr_banner.endDate|date('Y-m-d H:i:s') : '' }}</td>
@@ -183,6 +186,16 @@
                 <td colspan="36">no records found</td>
             </tr>
         {% endfor %}
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Нийт</td>
+
+
         </tbody>
     </table>
 

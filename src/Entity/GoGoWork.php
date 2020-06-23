@@ -23,7 +23,7 @@ class GoGoWork
     private $arrearge;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $clicked_count;
 
@@ -58,7 +58,7 @@ class GoGoWork
     private $start_date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $total;
     /**
@@ -67,7 +67,7 @@ class GoGoWork
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100,nullable=true)
      */
     private $comment;
     /**
@@ -86,7 +86,7 @@ class GoGoWork
     private $responded_by;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100,nullable=true)
      */
     private $contactName;
 

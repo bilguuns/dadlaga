@@ -13,25 +13,30 @@
 
 
 
-
-                <th>Name</th>
-                <th>Type</th>
                 <th>Company</th>
-                <th>User</th>
-                <th>Responded</th>
-                <th>ContactName</th>
+                <th>Компаний регистер</th>
+                <th>Type</th>
+                <th>Name</th>
+
+
+{#                <th>ContactName</th>#}
                 <th>Start_date</th>
                 <th>End_date</th>
-                <th>comment</th>
-                <th>Clicked_count</th>
+{#                <th>comment</th>#}
+{#                <th>Clicked_count</th>#}
                 <th>Day</th>
 
                 <th>Price</th>
                 <th>Sale</th>
-                <th>Arrearge</th>
+
 
                 <th>Payment</th>
-                <th>Total</th>
+{#                <th>Total</th>#}
+                <th>Arrearge</th>
+
+
+                <th>User</th>
+                <th>Responded</th>
 
 
 
@@ -45,23 +50,26 @@
         <tbody>
         {% for go_go_work in go_go_works %}
             <tr>
+                <td>{{ go_go_work.company.name }}</td>
+                <td>{{ go_go_work.company.register }}</td>
+                <td>{{ go_go_work.Type.name }}</td>
 {#                <td>{{ go_go_work.id }}</td>#}
                 <td>{{ go_go_work.name }}</td>
-                <td>{{ go_go_work.Type.name }}</td>
-                <td>{{ go_go_work.company.name }}</td>
-                <td>{{ go_go_work.user.username }}</td>
-                <td>{{ go_go_work.respondedby.username }}</td>
-                <td>{{ go_go_work.contactName }}</td>
+
+{#                <td>{{ go_go_work.contactName }}</td>#}
                 <td>{{ go_go_work.startDate ? go_go_work.startDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ go_go_work.endDate ? go_go_work.endDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ go_go_work.comment }}</td>
-                <td>{{ go_go_work.clickedCount }}</td>
+{#                <td>{{ go_go_work.comment }}</td>#}
+{#                <td>{{ go_go_work.clickedCount }}</td>#}
                 <td>{{ go_go_work.day }}</td>
                 <td>{{ go_go_work.Type.price}}</td>
                 <td>{{ go_go_work.sale }}</td>
-                <td>{{ go_go_work.arrearge }}</td>
+
                 <td>{{ go_go_work.payment }}</td>
-                <td>{{ go_go_work.total }}</td>
+{#                <td>{{ go_go_work.total }}</td>#}
+                <td>{{ go_go_work.arrearge }}</td>
+                <td>{{ go_go_work.user.username }}</td>
+                <td>{{ go_go_work.respondedby.username }}</td>
 
 
 

@@ -18,22 +18,27 @@ class GoGoWorkType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('arrearge')
-            ->add('clicked_count')
-            ->add('day')
-            ->add('end_date')
-            ->add('name')
-            ->add('payment')
-            ->add('sale')
-            ->add('start_date')
-            ->add('total')
-            ->add('comment')
-            ->add('contactName')
-            ->add('price')
-            ->add('noat',CheckboxType::class, ['required' => false, 'label' => 'НӨАТ', 'mapped' => false,])
-            ->add('Type',EntityType::class,['class'=>\App\Entity\GoGoWorkType::class,'choice_label'=>'name',])
-            ->add('user',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
             ->add('company',EntityType::class,['class'=>BnrCompany::class,'choice_label'=>'name',])
+            ->add('Type',EntityType::class,['class'=>\App\Entity\GoGoWorkType::class,'choice_label'=>'name',])
+            ->add('name')
+            ->add('start_date')
+            ->add('end_date')
+
+//            ->add('clicked_count')
+            ->add('day')
+            ->add('price')
+
+            ->add('sale')
+            ->add('payment')
+            ->add('arrearge')
+//            ->add('total')
+//            ->add('comment')
+//            ->add('contactName')
+
+            ->add('noat',CheckboxType::class, ['required' => false, 'label' => 'НӨАТ', 'mapped' => false,])
+
+            ->add('user',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
+
             ->add('responded_by',EntityType::class,['class'=>CmsOperator::class,'choice_label'=>'username',])
         ;
     }

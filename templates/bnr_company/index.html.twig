@@ -8,7 +8,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Нэр</th>
+                <th>Компаний Нэр</th>
+                <th>Компаний регистер</th>
                 <th>Засах</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
         {% for bnr_company in bnr_companies %}
             <tr>
                 <td>{{ bnr_company.name }}</td>
+                <td>{{ bnr_company.register }}</td>
 
                 <td>
                     <a href="{{ path('bnr_company_show', {'id': bnr_company.id}) }}">show</a>

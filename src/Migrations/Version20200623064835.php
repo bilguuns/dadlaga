@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200623062343 extends AbstractMigration
+final class Version20200623064835 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20200623062343 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP INDEX UNIQ_2C9176DE5E237E06 ON bnr_company');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_2C9176DE5E237E06 ON bnr_company (name)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20200623062343 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_2C9176DE5E237E06 ON bnr_company (name)');
+        $this->addSql('DROP INDEX UNIQ_2C9176DE5E237E06 ON bnr_company');
     }
 }

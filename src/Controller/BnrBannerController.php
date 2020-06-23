@@ -74,7 +74,11 @@ class BnrBannerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
+//            $startday=$formData->getStartDate();
+//            $endday=$formData->getEndDate();
+//            $days=$endday-$startday;
             $days = $formData->getDay();
+
             $sale = $formData->getSale();
             $Arrearage=$formData->getArrearage();
             $price=$formData->getPosition()->getPrice();
@@ -106,6 +110,7 @@ class BnrBannerController extends AbstractController
 
 
             $bnrBanner->setPrice($price);
+            $bnrBanner->setDay($days);
             $bnrBanner->setArrearage($Arrearage);
             $bnrBanner->setNOAT($noat);
 
@@ -200,7 +205,11 @@ class BnrBannerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
+//            $startday=$formData->getStartDate();
+//            $endday=$formData->getEndDate();
+//            $days=$endday-$startday;
             $days = $formData->getDay();
+
             $sale = $formData->getSale();
             $Arrearage=$formData->getArrearage();
             $price=$formData->getPosition()->getPrice();
@@ -234,6 +243,7 @@ class BnrBannerController extends AbstractController
             $bnrBanner->setPrice($price);
             $bnrBanner->setArrearage($Arrearage);
             $bnrBanner->setNOAT($noat);
+            $bnrBanner->setDay($days);
 
             $bnrBanner->setPayment($payment);
 

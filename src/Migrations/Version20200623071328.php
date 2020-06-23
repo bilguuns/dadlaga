@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200623062457 extends AbstractMigration
+final class Version20200623071328 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20200623062457 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE bnr_company ADD username VARCHAR(100) NOT NULL, ADD pass VARCHAR(100) NOT NULL, ADD email VARCHAR(100) NOT NULL, ADD percent INT NOT NULL, ADD paid INT NOT NULL, ADD por INT NOT NULL');
+        $this->addSql('ALTER TABLE bnr_company ADD register VARCHAR(50) NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20200623062457 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE bnr_company DROP username, DROP pass, DROP email, DROP percent, DROP paid, DROP por');
+        $this->addSql('ALTER TABLE bnr_company DROP register');
     }
 }
