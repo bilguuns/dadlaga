@@ -18,7 +18,7 @@ class GoGoWork
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $arrearge;
 
@@ -43,12 +43,12 @@ class GoGoWork
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $payment;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $sale;
 
@@ -58,11 +58,11 @@ class GoGoWork
     private $start_date;
 
     /**
-     * @ORM\Column(type="integer",nullable=true)
+     * @ORM\Column(type="decimal",nullable=true)
      */
     private $total;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $price;
 
@@ -96,7 +96,7 @@ class GoGoWork
     private $Type;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="decimal", precision=13, scale=2, nullable=true)
      */
     private $NOAT;
 

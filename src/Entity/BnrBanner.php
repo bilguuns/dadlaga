@@ -80,7 +80,7 @@ class BnrBanner
     private $show_mode;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $arrearage;
 
@@ -110,7 +110,7 @@ class BnrBanner
     private $contact_phone;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $paid;
 
@@ -120,12 +120,12 @@ class BnrBanner
     private $pay_mode;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $sale;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $price;
 
@@ -135,7 +135,7 @@ class BnrBanner
     private $day;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $payment;
 

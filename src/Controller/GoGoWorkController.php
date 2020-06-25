@@ -26,61 +26,9 @@ class GoGoWorkController extends AbstractController
     {
 
 
-        $work= new GoGoWork();
-        $form = $this->createForm(GoGoWorkType::class, $work);
-        $form->handleRequest($request);
 
-
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $formData = $form->getData();
-            $days = $formData->getDay();
-            $sale = $formData->getSale();
-            $Arrearge=$formData->getArrearge();
-            $price=$formData->getType()->getPrice();
-
-            if (true === $form['noat']->getData()) {
-
-                if($price!=0)
-                {
-                    $payment =($price*((100-$sale)/100))*$days;
-                    $Arrearge=$payment+($payment/10);
-
-
-                }
-                else
-                {
-                    $payment = ($days * $price);
-                    $Arrearge=$payment+($payment/10);
-                }
-                $noat=$Arrearge;
-
-
-            }
-            else
-            {
-                $payment =($price*((100-$sale)/100))*$days;
-                $Arrearge=$payment;
-                $noat=0;
-            }
-
-
-            $work->setPrice($price);
-            $work->setArrearge($Arrearge);
-            $work->setNOAT($noat);
-
-            $work->setPayment($payment);
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($work);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('bnr_banner_index');
-        }
 
         return $this->render('go_go_work/index.html.twig', [
-            'form' => $form->createView(),
             'go_go_works' => $goGoWorkRepository->findAll(),
         ]);
 
@@ -126,38 +74,48 @@ class GoGoWorkController extends AbstractController
         $form->handleRequest($request);
 
 
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
-            $days = $formData->getDay();
+            $startday=$formData->getStartDate();
+            $endday=$formData->getEndDate();
+            $day=date_diff($endday,$startday);
+            $days=$day->format('%a');
             $sale = $formData->getSale();
-            $Arrearge = $formData->getArrearge();
-            $price = $formData->getType()->getPrice();
+            $Arrearge=$formData->getArrearge();
+            $price=$formData->getType()->getPrice();
 
             if (true === $form['noat']->getData()) {
 
-                if ($price != 0) {
-                    $payment = ($price * ((100 - $sale) / 100)) * $days;
-                    $Arrearge = $payment + ($payment / 10);
+                if($price!=0)
+                {
+                    $payment =($price*((100-$sale)/100))*$days;
+                    $Arrearge=$payment+($payment/10);
 
 
-                } else {
-                    $payment = ($days * $price);
-                    $Arrearge = $payment + ($payment / 10);
                 }
-                $noat = $Arrearge;
+                else
+                {
+                    $payment = ($days * $price);
+                    $Arrearge=$payment+($payment/10);
+                }
+                $noat=$Arrearge;
 
 
-            } else {
-                $payment = ($price * ((100 - $sale) / 100)) * $days;
-                $Arrearge = $payment;
-                $noat = 0;
+            }
+            else
+            {
+                $payment =($price*((100-$sale)/100))*$days;
+                $Arrearge=$payment;
+                $noat=0;
             }
 
 
             $work->setPrice($price);
             $work->setArrearge($Arrearge);
             $work->setNOAT($noat);
+            $work->setDay($days);
 
             $work->setPayment($payment);
 
@@ -186,7 +144,10 @@ class GoGoWorkController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
-            $days = $formData->getDay();
+            $startday=$formData->getStartDate();
+            $endday=$formData->getEndDate();
+            $day=date_diff($endday,$startday);
+            $days=$day->format('%a');
             $sale = $formData->getSale();
             $Arrearge=$formData->getArrearge();
             $price=$formData->getType()->getPrice();
@@ -220,6 +181,7 @@ class GoGoWorkController extends AbstractController
             $work->setPrice($price);
             $work->setArrearge($Arrearge);
             $work->setNOAT($noat);
+            $work->setDay($days);
 
             $work->setPayment($payment);
 
@@ -239,17 +201,17 @@ class GoGoWorkController extends AbstractController
     /**
      * @Route("/{id}/edit", name="go_go_work_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, GoGoWork $work,GoGoWorkRepository $goGoWorkRepository): Response
+    public function edit(Request $request, GoGoWork $work, GoGoWorkRepository $goGoWorkRepository): Response
     {
         $form = $this->createForm(GoGoWorkType::class, $work);
         $form->handleRequest($request);
 
-
-
         if ($form->isSubmitted() && $form->isValid()) {
-
             $formData = $form->getData();
-            $days = $formData->getDay();
+            $startday=$formData->getStartDate();
+            $endday=$formData->getEndDate();
+            $day=date_diff($endday,$startday);
+            $days=$day->format('%a');
             $sale = $formData->getSale();
             $Arrearge=$formData->getArrearge();
             $price=$formData->getType()->getPrice();
@@ -283,8 +245,11 @@ class GoGoWorkController extends AbstractController
             $work->setPrice($price);
             $work->setArrearge($Arrearge);
             $work->setNOAT($noat);
+            $work->setDay($days);
+
 
             $work->setPayment($payment);
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($work);

@@ -25,7 +25,7 @@ class GoGoWorkType
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=13, scale=2)
      */
     private $price;
 

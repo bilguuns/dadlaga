@@ -10,6 +10,7 @@ use App\Entity\GoGoWork;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,11 +27,19 @@ class GoGoWorkType extends AbstractType
 
 //            ->add('clicked_count')
             ->add('day')
-            ->add('price')
+            ->add('price',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
 
-            ->add('sale')
-            ->add('payment')
-            ->add('arrearge')
+            ->add('sale',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
+            ->add('payment',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
+            ->add('arrearge',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
 //            ->add('total')
 //            ->add('comment')
 //            ->add('contactName')

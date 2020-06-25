@@ -12,9 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\WeekType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @Route("/bnr/banner")
@@ -54,6 +56,9 @@ class BnrBannerController extends AbstractController
 
         return $this->render('searchBar.html.twig',[
             'form'=>$form->createView(),
+            $form->handleRequest($request),
+            $formData = $form->getData(),
+
             'bnr_banners' => $bnrBannerRepository->findAll(),
             'go_go_works' => $goGoWorkRepository->findAll(),
         ]);
@@ -74,10 +79,14 @@ class BnrBannerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
-//            $startday=$formData->getStartDate();
-//            $endday=$formData->getEndDate();
-//            $days=$endday-$startday;
-            $days = $formData->getDay();
+
+            $startday=$formData->getStartDate();
+            $endday=$formData->getEndDate();
+            $day=date_diff($endday,$startday);
+//            echo $day->format('%a');
+            $days=$day->format('%a');
+//            dump($days);
+//            die();
 
             $sale = $formData->getSale();
             $Arrearage=$formData->getArrearage();
@@ -110,9 +119,9 @@ class BnrBannerController extends AbstractController
 
 
             $bnrBanner->setPrice($price);
-            $bnrBanner->setDay($days);
             $bnrBanner->setArrearage($Arrearage);
             $bnrBanner->setNOAT($noat);
+            $bnrBanner->setDay($days);
 
             $bnrBanner->setPayment($payment);
 
@@ -142,7 +151,15 @@ class BnrBannerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
-            $days = $formData->getDay();
+
+            $startday=$formData->getStartDate();
+            $endday=$formData->getEndDate();
+            $day=date_diff($endday,$startday);
+//            echo $day->format('%a');
+            $days=$day->format('%a');
+//            dump($days);
+//            die();
+
             $sale = $formData->getSale();
             $Arrearage=$formData->getArrearage();
             $price=$formData->getPosition()->getPrice();
@@ -176,6 +193,7 @@ class BnrBannerController extends AbstractController
             $bnrBanner->setPrice($price);
             $bnrBanner->setArrearage($Arrearage);
             $bnrBanner->setNOAT($noat);
+            $bnrBanner->setDay($days);
 
             $bnrBanner->setPayment($payment);
 
@@ -205,10 +223,14 @@ class BnrBannerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
-//            $startday=$formData->getStartDate();
-//            $endday=$formData->getEndDate();
-//            $days=$endday-$startday;
-            $days = $formData->getDay();
+
+            $startday=$formData->getStartDate();
+            $endday=$formData->getEndDate();
+            $day=date_diff($endday,$startday);
+//            echo $day->format('%a');
+            $days=$day->format('%a');
+//            dump($days);
+//            die();
 
             $sale = $formData->getSale();
             $Arrearage=$formData->getArrearage();

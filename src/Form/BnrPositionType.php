@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\BnrPosition;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,9 @@ class BnrPositionType extends AbstractType
             ->add('htmlID')
             ->add('defaultBanner')
             ->add('service_id')
-            ->add('price')
+            ->add('price',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
             ->add('title')
             ->add('ctitle')
         ;

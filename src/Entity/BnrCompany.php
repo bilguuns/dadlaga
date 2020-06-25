@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=BnrCompanyRepository::class)
  * @UniqueEntity(fields="name", message="Нэр давхцаж байна.")
- * @UniqueEntity(fields="register", message="Регистер давхцаж  байна.")
+ * @UniqueEntity(fields="register", message="Р егистер давхцаж  байна.")
  */
 class BnrCompany
 {
@@ -175,7 +175,7 @@ class BnrCompany
 /**
  * @return Collection|BnrBanner[]
  */
-public function getBnrBanners(): Collection
+public function getBnrBanners($Payment): Collection
 {
     return $this->bnrBanners;
 }

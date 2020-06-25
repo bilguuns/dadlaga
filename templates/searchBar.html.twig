@@ -7,7 +7,7 @@
     <div id="print">
 
     <h1>Тайлан</h1>
-{#    {{ form(form ) }}#}
+    {{ form(form ) }}
         <input id="print1" type="button" onclick="print1()" value="Тайлан ">
 {#    <a href="{{ path('bnr_banner_new') }}">Create banner</a>#}
     <table>
@@ -130,8 +130,8 @@
 
             </tr>
         {% else %}
-
         {% endfor %}
+
 
 
 
@@ -186,17 +186,154 @@
                 <td colspan="36">no records found</td>
             </tr>
         {% endfor %}
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Нийт</td>
+
+
+
+
+
+
+        {% set totalPayment = 0 %}
+        {% set totalnoat=0  %}
+        {% set total=0  %}
+        {% for bnr_banner in bnr_banners%}
+            {% set totalPayment = totalPayment + bnr_banner.payment %}
+            {% set totalnoat =totalnoat  + bnr_banner.noat %}
+            {% set total =total+ bnr_banner.arrearage%}
+
+        {% endfor %}
+        {% for go_go_work in go_go_works %}
+            {% set totalPayment = totalPayment + go_go_work.payment %}
+            {% set totalnoat = totalnoat + go_go_work.noat%}
+            {% set total =total+ go_go_work.arrearge%}
+        {% endfor %}
+        <tr>
+
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <th> Нийт </th>
+            <th>{{ totalPayment }}</th>
+            <th>{{ totalnoat}}</th>
+            <th>{{ total}}</th>
+
+        </tr>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <th>Бизнес төлөвлөгөө</th>
+            <td><input type="text" name="Business plan" id="businessPlan" value="0" placeholder=""/></td>
+        </tr>
+
+
+
+
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <th>Биелэлтийн хувь</th>
+            <td></td>
+
+        </tr>
+
+        <tr>
+        </tr>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <th>Тооцоо хийсэн:</th>
+            <td> </td>
+            <td><input type="text" id="txt_1" onkeyup='saveValue(this);'/></td>
+
+        </tr>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <th>Хянасан:</th>
+            <td> </td>
+            <td><input type="text" id="txt_2" onkeyup='saveValue(this);'/></td>
+        </tr>
+
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <th>Танилцсан:</th>
+            <td> </td>
+            <td><input type="text" id="txt_3" onkeyup='saveValue(this);'/></td>
+        </tr>
+
+
+
+
+
+
+
+        <script type="text/javascript">
+            document.getElementById("txt_1").value = getSavedValue("txt_1");    // set the value to this input
+            document.getElementById("txt_2").value = getSavedValue("txt_2");
+            document.getElementById("txt_3").value = getSavedValue("txt_3"); // set the value to this input
+            /* Here you can add more inputs to set value. if it's saved */
+
+            //Save the value function - save it to localStorage as (ID, VALUE)
+            function saveValue(e){
+                var id = e.id;  // get the sender's id to save it .
+                var val = e.value; // get the value.
+                localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override .
+            }
+
+            function getSavedValue  (a){
+                if (!localStorage.getItem(a)) {
+                    return "";
+                }
+                return localStorage.getItem(a);
+            }
+        </script>
+
+
+
+
+
 
 
         </tbody>
+    </table>
+    <table class="table">
+        <tbody>
+
+
+{#            {% endfor %}#}
+
+
+        </tbody>
+
     </table>
 
 

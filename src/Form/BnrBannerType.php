@@ -33,18 +33,28 @@ class BnrBannerType extends AbstractType
             ->add('status')
             ->add('approved_at')
             ->add('show_mode')
-//            ->add('arrearage')
+            ->add('arrearage',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
             ->add('comment')
             ->add('condition0')
             ->add('contact_email')
             ->add('contact_name')
             ->add('contact_phone')
-            ->add('paid')
+            ->add('paid',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
             ->add('pay_mode')
-            ->add('sale')
-//            ->add('price')
-//            ->add('day')
-//            ->add('payment')
+            ->add('sale',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
+            ->add('price',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
+            ->add('day')
+            ->add('payment',MoneyType::class, [
+                'currency' => 'MNT'
+            ])
             ->add('dialog')
             ->add('DlgWidth')
             ->add('DlgHeight')
